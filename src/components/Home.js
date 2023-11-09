@@ -1,7 +1,12 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import usePersistedState from "../hooks/usePersistedState";
 
 const Home = () => {
+
+  const [numCookies] = usePersistedState(1000, 'num-cookies');
+
+  
   return (
     <Wrapper>
       <Title>Cookie game</Title>

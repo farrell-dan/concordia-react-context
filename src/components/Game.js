@@ -7,6 +7,8 @@ import useInterval from "../hooks/use-interval.hook";
 import cookieSrc from "../cookie.svg";
 import Item from "./Item";
 
+import usePersistedState from "../hooks/usePersistedState";
+
 const items = [
   { id: "cursor", name: "Cursor", cost: 10, value: 1 },
   { id: "grandma", name: "Grandma", cost: 100, value: 10 },
@@ -23,14 +25,17 @@ const calculateCookiesPerSecond = (purchasedItems) => {
   }, 0);
 };
 
-const Game = () => {
-  const [numCookies, setNumCookies] = useState(1000);
 
-  const [purchasedItems, setPurchasedItems] = useState({
-    cursor: 0,
-    grandma: 0,
-    farm: 0,
-  });
+
+const Game = ({ numCookies, setNumCookies, purchasedItems, setPurchasedItems }) => {
+
+useEffect(() => {
+  document.title = `${numCookies} cookies - Cookie Clicker Workshop`;
+  return () => {
+    document.title = 'Cookie Clicker Workshop';
+  };
+}, [numCookies]);
+
 
   const incrementCookies = () => {
     setNumCookies((c) => c + 1);

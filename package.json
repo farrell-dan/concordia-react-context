@@ -8,7 +8,7 @@
         "react": "17.0.2",
         "react-dom": "17.0.2",
         "react-router-dom": "^6.3.0",
-        "react-scripts": "4.0.3",
+        "react-scripts": "^5.0.1",
         "styled-components": "^5.3.5"
     },
     "resolutions": {
@@ -26,5 +26,8 @@
         "not dead",
         "not ie <= 11",
         "not op_mini all"
-    ]
+    ],
+    "repository": "https://github.com/farrell-dan/react-context.git",
+    "author": "farrell-dan <140118556+farrell-dan@users.noreply.github.com>",
+    "license": "MIT"
 }
