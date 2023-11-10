@@ -1,7 +1,6 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from "react";
 
 const usePersistedState = (defaultValue, key) => {
-
   const [value, setValue] = useState(() => {
     const storedValue = localStorage.getItem(key);
     return storedValue ? JSON.parse(storedValue) : defaultValue;
@@ -12,6 +11,6 @@ const usePersistedState = (defaultValue, key) => {
   }, [key, value]);
 
   return [value, setValue];
-}
+};
 
 export default usePersistedState;
