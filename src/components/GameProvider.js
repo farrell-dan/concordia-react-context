@@ -1,6 +1,6 @@
 import usePersistedState from "../hooks/usePersistedState";
-import { createContext, useState, useEffect } from "react";
-import useInterval from "../hooks/use-interval.hook";
+import { createContext, useEffect } from "react";
+
 
 export const GameContext = createContext(null);
 
@@ -12,9 +12,9 @@ export const items = [
 
 
 const GameProvider = ({ children }) => {
-  const [numCookies, setNumCookies] = usePersistedState(1000, "numCookies");
+  const [numCookies, setNumCookies] = usePersistedState ( 1000 , "num-Cookies");
 
-  const [purchasedItems, setPurchasedItems] = useState(
+  const [purchasedItems, setPurchasedItems] = usePersistedState(
     {
       cursor: 0,
       grandma: 0,
@@ -36,11 +36,6 @@ const GameProvider = ({ children }) => {
   const incrementCookies = () => {
     setNumCookies((c) => c + 1);
   };
-
-  useInterval(() => {
-    const numOfGeneratedCookies = calculateCookiesPerSecond(purchasedItems);
-    setNumCookies(numCookies + numOfGeneratedCookies);
-  }, 1000);
 
   useEffect(() => {
     document.title = `${numCookies} cookies - Cookie Clicker Workshop`;
